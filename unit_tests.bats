@@ -48,3 +48,20 @@ source ./compare_semantic_versions
 	run compare_semantic_version 1.1.2 1.1.1
 	[ $status = 1 ]
 }
+
+# With variable depth
+
+@test 'Returns false because ignores path version' {
+	run compare_semantic_version 1.1.1 1.1.2 2
+	[ $status = 1 ]
+}
+
+@test 'Returns true when minor version is higher and path version is ignored' {
+	run compare_semantic_version 1.1.1 1.2.1 2
+	[ $status = 0 ]
+}
+
+@test 'Returns false because ignores minor version' {
+	run compare_semantic_version 1.1.2 1.2.3 1
+	[ $status = 1 ]
+}
