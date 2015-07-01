@@ -20,7 +20,7 @@ You can easliy run the tests with this command:
     bats unit_tests.bats
 
 For more information on installing/using Bats you have to take a look
-here: @TODO: add link
+[HERE](https://github.com/sstephenson/bats).
 
 
 ## Contributions
