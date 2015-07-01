@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+compare_semantic_version(){
+	local oldVersion=$1 newVersion=$2
+
+	# Check all versions
+	for i in {1..3};
+		do
+		local oldPartVersion=$(echo $oldVersion | cut -d'.' -f"$i");
+		local newPartVersion=$(echo $newVersion | cut -d'.' -f"$i");
+
+		if is_newer_version $oldPartVersion $newPartVersion;
+		then
+			return 0;
+		fi
+	done
+
+	return 1
+}
+
+is_newer_version(){
+	local oldVersion=$1 newVersion=$2
+
+	if [ $newVersion -gt $oldVersion ]
+	then
+	 return 0;
+	fi
+
+	return 1;
+}
